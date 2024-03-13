@@ -38,9 +38,6 @@ custom_css = f"""
         .st-fs {{
             font-size: 20px;
         }}
-        .sidebar-content {{
-            pointer-events: none;
-        }}
     </style>
 """
 st.markdown(custom_css, unsafe_allow_html=True)
@@ -48,7 +45,7 @@ st.markdown(custom_css, unsafe_allow_html=True)
 def main():
     st.title("Tech Quest")
     st.sidebar.title("Navigation")
-    page = st.sidebar.selectbox("Go to", stages, index=0, key="navigation")
+    page = st.sidebar.selectbox("Go to", stages, index=0)
 
     if page == "Cryptography":
         display_cryptography()
