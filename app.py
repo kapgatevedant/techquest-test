@@ -53,6 +53,8 @@ def main():
     page_index = st.sidebar.radio("Go to", stages, index=session_state.current_stage_index)
     session_state.current_stage_index = page_index
 
+    print("Current stage index:", session_state.current_stage_index)
+
     current_stage = stages[session_state.current_stage_index]
 
     if current_stage == "Cryptography":
