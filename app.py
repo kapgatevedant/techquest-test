@@ -38,8 +38,9 @@ custom_css = f"""
         .st-fs {{
             font-size: 20px;
         }}
-        .sidebar-content {{
-            cursor: default !important;
+        /* Remove pointer cursor for navigation column dropdown */
+        .sidebar-content select {{
+            cursor: default;
         }}
     </style>
 """
