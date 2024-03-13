@@ -15,13 +15,6 @@ st.set_page_config(
 stages = ["Cryptography", "Flowcharts", "Pseudocode"]
 time_records = {stage: 0 for stage in stages}
 
-# Define passwords for each stage
-stage_passwords = {
-    "Cryptography": "ABCDE",
-    "Flowcharts": "FGHIJ",
-    "Pseudocode": "KLMNO"
-}
-
 # Define dark and purple theme
 custom_css = f"""
     <style>
@@ -44,9 +37,14 @@ st.markdown(custom_css, unsafe_allow_html=True)
 
 def main():
     st.title("Tech Quest")
+    st.subheader("Welcome to the Tech Quest event!")
+    st.write("This is an interactive challenge where you'll need to solve tech-themed puzzles to progress through the stages.")
+    
+    # Sidebar navigation
     st.sidebar.title("Navigation")
-    page = st.sidebar.radio("Go to", stages, index=0)
-
+    page = st.sidebar.radio("Go to", ["Cryptography", "Flowcharts", "Pseudocode"])
+    
+    # Display content based on selected page
     if page == "Cryptography":
         display_cryptography()
     elif page == "Flowcharts":
@@ -57,14 +55,7 @@ def main():
 def display_cryptography():
     st.header("Stage 1: Cryptography")
     with st.expander("Click here to start Cryptography stage"):
-        password = st.text_input("Enter the password to proceed:")
-        if password == stage_passwords["Cryptography"]:
-            st.write("Password accepted! You can now proceed to the next stage.")
-            if st.button("Next"):
-                next_index = (stages.index("Cryptography") + 1) % len(stages)
-                st.experimental_set_query_params(page=stages[next_index])
-        else:
-            st.write("Please enter the correct password to proceed.")
+        st.write("This is where you'd display the content for the Cryptography stage.")
 
 def display_flowcharts():
     st.header("Stage 2: Flowcharts")
