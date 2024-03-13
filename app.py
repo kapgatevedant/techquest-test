@@ -56,8 +56,9 @@ def main():
 
 def display_cryptography():
     st.header("Stage 1: Cryptography")
+    st.subheader("Enter the password to proceed:")
     with st.expander("Click here to start Cryptography stage"):
-        password = st.text_input("Enter the password to proceed:")
+        password = st.text_input("Password")
         if password == stage_passwords["Cryptography"]:
             st.write("Password accepted! You can now proceed to the next stage.")
             if st.button("Next"):
@@ -68,8 +69,9 @@ def display_cryptography():
 
 def display_flowcharts():
     st.header("Stage 2: Flowcharts")
+    st.subheader("Enter the password to proceed:")
     with st.expander("Click here to start Flowcharts stage"):
-        password = st.text_input("Enter the password to proceed:")
+        password = st.text_input("Password")
         if password == stage_passwords["Flowcharts"]:
             st.write("Password accepted! You can now proceed to the next stage.")
             if st.button("Next"):
@@ -80,8 +82,9 @@ def display_flowcharts():
 
 def display_pseudocode():
     st.header("Stage 3: Pseudocode")
+    st.subheader("Enter the password to proceed:")
     with st.expander("Click here to start Pseudocode stage"):
-        password = st.text_input("Enter the password to proceed:")
+        password = st.text_input("Password")
         if password == stage_passwords["Pseudocode"]:
             st.write("Password accepted! You can now proceed to the next stage.")
             if st.button("Next"):
