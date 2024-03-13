@@ -42,10 +42,17 @@ custom_css = f"""
 """
 st.markdown(custom_css, unsafe_allow_html=True)
 
+# Initialize session state
+session_state = st.session_state
+if "current_stage_index" not in session_state:
+    session_state.current_stage_index = 0
+
 def main():
     st.title("Tech Quest")
     st.sidebar.title("Navigation")
-    page_index = st.sidebar.radio("Go to", stages, index=0)
+    page_index = st.sidebar.radio("Go to", stages, index=session_state.current_stage_index)
+    session_state.current_stage_index = page_index
+
     current_stage = stages[page_index]
 
     if current_stage == "Cryptography":
@@ -61,7 +68,7 @@ def display_cryptography():
     if password == stage_passwords["Cryptography"]:
         st.write("Password accepted! You can now proceed to the next stage.")
         if st.button("Next"):
-            st.experimental_rerun()
+            session_state.current_stage_index += 1
     else:
         st.write("Please enter the correct password to proceed.")
 
@@ -71,7 +78,7 @@ def display_flowcharts():
     if password == stage_passwords["Flowcharts"]:
         st.write("Password accepted! You can now proceed to the next stage.")
         if st.button("Next"):
-            st.experimental_rerun()
+            session_state.current_stage_index += 1
     else:
         st.write("Please enter the correct password to proceed.")
 
@@ -81,7 +88,7 @@ def display_pseudocode():
     if password == stage_passwords["Pseudocode"]:
         st.write("Password accepted! You can now proceed to the next stage.")
         if st.button("Next"):
-            st.experimental_rerun()
+            session_state.current_stage_index += 1
     else:
         st.write("Please enter the correct password to proceed.")
 
