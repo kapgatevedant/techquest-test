@@ -65,7 +65,8 @@ def display_flowcharts():
         password = st.text_input("Enter the password to proceed:")
         if password == stage_passwords["Flowcharts"]:
             st.write("Password accepted! You can now proceed to the next stage.")
-            st.button("Next")
+            if st.button("Next"):
+                st.experimental_rerun()
         else:
             st.write("Please enter the correct password to proceed.")
 
@@ -75,7 +76,8 @@ def display_pseudocode():
         password = st.text_input("Enter the password to proceed:")
         if password == stage_passwords["Pseudocode"]:
             st.write("Password accepted! You can now proceed to the next stage.")
-            st.button("Next")
+            if st.button("Next"):
+                st.experimental_rerun()
         else:
             st.write("Please enter the correct password to proceed.")
 
