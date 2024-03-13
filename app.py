@@ -26,7 +26,7 @@ stage_passwords = {
 custom_css = f"""
     <style>
         body {{
-            color: #FFFFFF;
+            color: #FF00FF;  /* Purple text */
             background-color: #23002C;
         }}
         .st-bw {{
