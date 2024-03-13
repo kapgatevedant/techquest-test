@@ -37,7 +37,6 @@ custom_css = f"""
         }}
         .st-fs {{
             font-size: 20px;
-            cursor: default;
         }}
     </style>
 """
