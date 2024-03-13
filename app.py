@@ -17,9 +17,9 @@ time_records = {stage: 0 for stage in stages}
 
 # Define passwords for each stage
 stage_passwords = {
-    "Cryptography": "",
-    "Flowcharts": "ABCDE",
-    "Pseudocode": "ABCDE"
+    "Cryptography": "ABCDE",
+    "Flowcharts": "FGHIJ",
+    "Pseudocode": "KLMNO"
 }
 
 # Define dark and purple theme
@@ -57,29 +57,23 @@ def main():
 def display_cryptography():
     st.header("Stage 1: Cryptography")
     with st.expander("Click here to start Cryptography stage"):
-        st.write("This is where you'd display the content for the Cryptography stage.")
+        password = st.text_input("Enter the password to proceed:")
+        if password == stage_passwords["Cryptography"]:
+            st.write("Password accepted! You can now proceed to the next stage.")
+            if st.button("Next"):
+                st.experimental_rerun()
+        else:
+            st.write("Please enter the correct password to proceed.")
 
 def display_flowcharts():
     st.header("Stage 2: Flowcharts")
     with st.expander("Click here to start Flowcharts stage"):
-        password = st.text_input("Enter the password to proceed:")
-        if password == stage_passwords["Flowcharts"]:
-            st.write("Password accepted! You can now proceed to the next stage.")
-            if st.button("Next"):
-                st.experimental_rerun()
-        else:
-            st.write("Please enter the correct password to proceed.")
+        st.write("This is where you'd display the content for the Flowcharts stage.")
 
 def display_pseudocode():
     st.header("Stage 3: Pseudocode")
     with st.expander("Click here to start Pseudocode stage"):
-        password = st.text_input("Enter the password to proceed:")
-        if password == stage_passwords["Pseudocode"]:
-            st.write("Password accepted! You can now proceed to the next stage.")
-            if st.button("Next"):
-                st.experimental_rerun()
-        else:
-            st.write("Please enter the correct password to proceed.")
+        st.write("This is where you'd display the content for the Pseudocode stage.")
 
 if __name__ == "__main__":
     main()
