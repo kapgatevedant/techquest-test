@@ -11,9 +11,8 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Define stages and their corresponding time records
+# Define stages
 stages = ["Cryptography", "Flowcharts", "Pseudocode"]
-time_records = {stage: 0 for stage in stages}
 
 # Define passwords for each stage
 stage_passwords = {
@@ -42,26 +41,16 @@ custom_css = f"""
 """
 st.markdown(custom_css, unsafe_allow_html=True)
 
-# Initialize session state
-session_state = st.session_state
-if "current_stage_index" not in session_state:
-    session_state.current_stage_index = 0
-
 def main():
     st.title("Tech Quest")
     st.sidebar.title("Navigation")
-    page_index = st.sidebar.radio("Go to", stages, index=session_state.current_stage_index)
-    session_state.current_stage_index = page_index
+    page_index = st.sidebar.radio("Go to", stages, index=0)
 
-    print("Current stage index:", session_state.current_stage_index)
-
-    current_stage = stages[session_state.current_stage_index]
-
-    if current_stage == "Cryptography":
+    if page_index == 0:
         display_cryptography()
-    elif current_stage == "Flowcharts":
+    elif page_index == 1:
         display_flowcharts()
-    elif current_stage == "Pseudocode":
+    elif page_index == 2:
         display_pseudocode()
 
 def display_cryptography():
@@ -70,7 +59,7 @@ def display_cryptography():
     if password == stage_passwords["Cryptography"]:
         st.write("Password accepted! You can now proceed to the next stage.")
         if st.button("Next"):
-            session_state.current_stage_index += 1
+            st.experimental_rerun()
 
 def display_flowcharts():
     st.header("Stage 2: Flowcharts")
