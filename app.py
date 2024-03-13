@@ -42,16 +42,24 @@ custom_css = f"""
 """
 st.markdown(custom_css, unsafe_allow_html=True)
 
+# Initialize session state
+session_state = st.session_state
+if "current_stage_index" not in session_state:
+    session_state.current_stage_index = 0
+
 def main():
     st.title("Tech Quest")
     st.sidebar.title("Navigation")
-    page = st.sidebar.radio("Go to", stages, index=0)
+    page_index = st.sidebar.radio("Go to", stages, index=session_state.current_stage_index)
+    session_state.current_stage_index = page_index
 
-    if page == "Cryptography":
+    current_stage = stages[session_state.current_stage_index]
+
+    if current_stage == "Cryptography":
         display_cryptography()
-    elif page == "Flowcharts":
+    elif current_stage == "Flowcharts":
         display_flowcharts()
-    elif page == "Pseudocode":
+    elif current_stage == "Pseudocode":
         display_pseudocode()
 
 def display_cryptography():
@@ -61,19 +69,31 @@ def display_cryptography():
         if password == stage_passwords["Cryptography"]:
             st.write("Password accepted! You can now proceed to the next stage.")
             if st.button("Next"):
-                st.experimental_rerun()
-        else:
-            st.write("Please enter the correct password to proceed.")
+                session_state.current_stage_index += 1
+    else:
+        st.write("Please enter the correct password to proceed.")
 
 def display_flowcharts():
     st.header("Stage 2: Flowcharts")
     with st.expander("Click here to start Flowcharts stage"):
-        st.write("This is where you'd display the content for the Flowcharts stage.")
+        password = st.text_input("Enter the password to proceed:")
+        if password == stage_passwords["Flowcharts"]:
+            st.write("Password accepted! You can now proceed to the next stage.")
+            if st.button("Next"):
+                session_state.current_stage_index += 1
+    else:
+        st.write("Please enter the correct password to proceed.")
 
 def display_pseudocode():
     st.header("Stage 3: Pseudocode")
     with st.expander("Click here to start Pseudocode stage"):
-        st.write("This is where you'd display the content for the Pseudocode stage.")
+        password = st.text_input("Enter the password to proceed:")
+        if password == stage_passwords["Pseudocode"]:
+            st.write("Password accepted! You can now proceed to the next stage.")
+            if st.button("Next"):
+                session_state.current_stage_index += 1
+    else:
+        st.write("Please enter the correct password to proceed.")
 
 if __name__ == "__main__":
     main()
