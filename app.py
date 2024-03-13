@@ -38,10 +38,6 @@ custom_css = f"""
         .st-fs {{
             font-size: 20px;
         }}
-        /* Remove pointer cursor for navigation column dropdown */
-        .sidebar-content select {{
-            cursor: default;
-        }}
     </style>
 """
 st.markdown(custom_css, unsafe_allow_html=True)
@@ -49,10 +45,7 @@ st.markdown(custom_css, unsafe_allow_html=True)
 def main():
     st.title("Tech Quest")
     st.sidebar.title("Navigation")
-    with st.sidebar:
-        st.write("Welcome to the Tech Quest event!")
-        st.write("This is an interactive challenge where you'll need to solve tech-themed puzzles to progress through the stages.")
-    page = st.sidebar.radio("Go to", stages, index=0)
+    page = st.sidebar.selectbox("Go to", stages, index=0)
 
     if page == "Cryptography":
         display_cryptography()
@@ -63,6 +56,10 @@ def main():
 
 def display_cryptography():
     st.header("Stage 1: Cryptography")
+    st.subheader("Problem:")
+    if st.button("Show Problem"):
+        st.write("Here's the problem for the Cryptography stage.")
+    st.write("")  # Adding an empty space for better separation
     with st.expander("Click here to start Cryptography stage"):
         st.write("This is where you'd display the content for the Cryptography stage.")
     st.subheader("Enter the password to proceed:")
@@ -76,6 +73,10 @@ def display_cryptography():
 
 def display_flowcharts():
     st.header("Stage 2: Flowcharts")
+    st.subheader("Problem:")
+    if st.button("Show Problem"):
+        st.write("Here's the problem for the Flowcharts stage.")
+    st.write("")  # Adding an empty space for better separation
     with st.expander("Click here to start Flowcharts stage"):
         st.write("This is where you'd display the content for the Flowcharts stage.")
     st.subheader("Enter the password to proceed:")
@@ -89,6 +90,10 @@ def display_flowcharts():
 
 def display_pseudocode():
     st.header("Stage 3: Pseudocode")
+    st.subheader("Problem:")
+    if st.button("Show Problem"):
+        st.write("Here's the problem for the Pseudocode stage.")
+    st.write("")  # Adding an empty space for better separation
     with st.expander("Click here to start Pseudocode stage"):
         st.write("This is where you'd display the content for the Pseudocode stage.")
     st.subheader("Enter the password to proceed:")
